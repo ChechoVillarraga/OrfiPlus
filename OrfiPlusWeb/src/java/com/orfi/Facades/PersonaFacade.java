@@ -28,6 +28,7 @@ public class PersonaFacade extends AbstractFacade<Persona> {
     protected EntityManager getEntityManager() {
         return em;
     }
+
     public PersonaFacade() {
         super(Persona.class);
     }

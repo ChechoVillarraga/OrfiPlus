@@ -87,8 +87,9 @@ public class Login implements Serializable {
         if (per != null) {
             //Ni ideaa porque cargo eso asi.
             usuario = per;
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
             //retorna un valor, esto es del login original
-            return "index";
+            return "protegido/index?faces-redirect=true";
         } else {
             //Esta mal los datos de login retoran mensaje de error
             FacesContext.getCurrentInstance().addMessage(
