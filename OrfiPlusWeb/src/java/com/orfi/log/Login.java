@@ -2,6 +2,7 @@ package com.orfi.log;
 
 import com.orfi.entity.Persona;
 import com.orfi.Facades.PersonaFacade;
+import com.orfi.entity.Rol;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
@@ -10,13 +11,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 @ManagedBean
+@Named(value = "login")
 @SessionScoped
 public class Login implements Serializable {
 
@@ -27,8 +30,10 @@ public class Login implements Serializable {
     private String user;
     private Persona usuario;
     
+
     @Inject
     private PersonaFacade perFacade;
+    private Rol rolSeleccionado;
 
     public Login() {
         usuario = null;
@@ -62,24 +67,30 @@ public class Login implements Serializable {
         return usuario;
     }
 
+    public Rol getRolSeleccionado() {
+        return rolSeleccionado;
+    }
+
+    public void setRolSeleccionado(Rol rolSeleccionado) {
+        this.rolSeleccionado = rolSeleccionado;
+    }
+
     public void setUsuario(Persona usuario) {
         this.usuario = usuario;
     }
-    
 
     //validate login
     public String validateUsernamePassword() {
         //TAREA: VERIFICAR como instalarle un filtro para que no se totteeee esto cuando no retorne datos
-        
+
         //arma el mapa con los valores que se van a incluir como filtos en la consulta ej Carlos y Ramirez
         Map<String, Object> filtro = new HashMap<>();
         //SE enlistan el campo y el valor que se quieren a?adir al filtro. Si se desean mas coopie y pegue la linea
         filtro.put("nombres", "Nelson");
-        
+
         //a?ade los resultados de la consulta en una lista para que pasos posteriores solo se disponga de estos datos filtrados.
         List<Persona> personas = perFacade.fitro(filtro);
-        
-        
+
         //boolean valid = LoginDAO.validate(user, pwd); esta linea era del antiguo login
         //para usar La entidad Facade la cual hace toda la consulta sin aramar mas codigos
         Persona per = perFacade.validate(user, pwd);
@@ -88,9 +99,12 @@ public class Login implements Serializable {
             //Ni ideaa porque cargo eso asi.
             usuario = per;
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+
             //retorna un valor, esto es del login original
+            rolSeleccionado = usuario.getRolList().get(0);
             return "protegido/index?faces-redirect=true";
         } else {
+            
             //Esta mal los datos de login retoran mensaje de error
             FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -105,6 +119,7 @@ public class Login implements Serializable {
     public String logout() {
         user = "";
         pwd = "";
+        rolSeleccionado = null;
         msg = "";
         usuario = null;
         HttpSession session = SessionUtils.getSession();

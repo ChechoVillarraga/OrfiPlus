@@ -8,13 +8,16 @@
 
 <h:head>
     <title>Success Page</title>
-</h:head>
+    <link href="resources/css/cmenu.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/ageneral.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </h:head>
 <h:body>
     <f:view>
-        <p>Successfully logged in</p>
-        <p>Hi, #{user.firstName}</p>
-        <h:form>
-            <p>
+        
+     
+               
                 <h:commandLink value="logout" action="#{user.logout}" />
             </p>
         </h:form>
