@@ -102,14 +102,14 @@ public class Login implements Serializable {
                 //Ni ideaa porque cargo eso asi.
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
                 //retorna un valor, esto es del login original
-                url = "protegido/index?faces-redirect=true";
+                url = "protegido/admin/addEmploy?faces-redirect=true";
             } else if (rolCompare==101011) {
 //Ni ideaa porque cargo eso asi.
                 usuario = per;
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
                 //retorna un valor, esto es del login original
                 rolSeleccionado = usuario.getRolList().get(0);
-                url = "protegido/index?faces-redirect=true";
+                url = "protegido/admin/addEmploy?faces-redirect=true";
             } else if (rolCompare==101012) {
 //Ni ideaa porque cargo eso asi.
                 usuario = per;

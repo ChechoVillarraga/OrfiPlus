@@ -6,34 +6,24 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-        <title>Ejer. Session - <ui:insert name="title"></ui:insert></title>
-        <link href="../../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../../resources/css/ageneral.css" rel="stylesheet" type="text/css"/>
-        <link href="../../resources/css/cmenu.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet value="bootstrap.css" library="css"/>
+        <h:outputStylesheet value="ageneral.css" library="css"/>
+        <h:outputStylesheet value="cmenu.css" library="css"/>
 
-        <script src="../../resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
-        <script src="../../resources/js/bootstrap.js" type="text/javascript"></script>
+        <h:outputScript value="jquery-1.12.0.min.js"  library="js" target="body"/>
+        <h:outputScript value="bootstrap.js"  library="js"/>
+        <title>OrfiPlus - <ui:insert name="title"></ui:insert></title>
     </h:head>
 
 
     <h:body >
-
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta charset="utf-8"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>      
-
-
         <style type="text/css">#imgadentro{margin-top: 30px; margin-left: 30px; </style>
-
-
-
                     <div id="home" class="header">
                         <div class="top-headerA">
                             <div class="container">
                                 <div class="logo lobster letra">
-                                    <img class="ima" src="../../resources/images/logom.png" alt="Orfi Plus"/>
+                                    <h:graphicImage library="images" name="logom.png" alt="Orfi Plus Logo"/>
                                 </div>
 
                                 <nav class="top-nav">
@@ -43,6 +33,7 @@
                                         <li><a href="jsp/seguimientos.jsp">seguimientos</a></li>
                                         <li><a href="jsp/usuarios.jsp">Usuarios</a></li>
                                         <li><a href="root/index.xhtml">CRUD</a></li>
+                                        <li><a href="admin/addEmploy.xhtml">Añadir Empleado</a></li>
 
                                         <li><a>#{login.rolSeleccionado.rol}</a></li>                   
 
