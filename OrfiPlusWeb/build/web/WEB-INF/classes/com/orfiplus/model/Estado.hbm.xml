@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/08/2016 10:16:33 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.orfiplus.model.Estado" table="estado" catalog="orfiplusdb" optimistic-lock="version">
+        <id name="idEstado" type="int">
+            <column name="idESTADO" />
+            <generator class="assigned" />
+        </id>
+        <property name="estadoJoya" type="string">
+            <column name="estadoJoya" length="15" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="60" />
+        </property>
+        <property name="estadoinfo" type="java.lang.Boolean">
+            <column name="estadoinfo" />
+        </property>
+    </class>
+</hibernate-mapping>
