@@ -29,7 +29,6 @@ public class Login implements Serializable {
     private String msg;
     private String user;
     private Persona usuario;
-    
 
     @Inject
     private PersonaFacade perFacade;
@@ -81,38 +80,63 @@ public class Login implements Serializable {
 
     //validate login
     public String validateUsernamePassword() {
+        String url="";
         //TAREA: VERIFICAR como instalarle un filtro para que no se totteeee esto cuando no retorne datos
 
-        //arma el mapa con los valores que se van a incluir como filtos en la consulta ej Carlos y Ramirez
-        Map<String, Object> filtro = new HashMap<>();
-        //SE enlistan el campo y el valor que se quieren a?adir al filtro. Si se desean mas coopie y pegue la linea
-        filtro.put("nombres", "Nelson");
+//        //arma el mapa con los valores que se van a incluir como filtos en la consulta ej Carlos y Ramirez
+//        Map<String, Object> filtro = new HashMap<>();
+//        //SE enlistan el campo y el valor que se quieren a?adir al filtro. Si se desean mas coopie y pegue la linea
+//        filtro.put("nombres", "Nelson");
+//
+//        //a?ade los resultados de la consulta en una lista para que pasos posteriores solo se disponga de estos datos filtrados.
+//        List<Persona> personas = perFacade.fitro(filtro);
 
-        //a?ade los resultados de la consulta en una lista para que pasos posteriores solo se disponga de estos datos filtrados.
-        List<Persona> personas = perFacade.fitro(filtro);
-
-        //boolean valid = LoginDAO.validate(user, pwd); esta linea era del antiguo login
         //para usar La entidad Facade la cual hace toda la consulta sin aramar mas codigos
         Persona per = perFacade.validate(user, pwd);
         // si retorno un objeto o no
         if (per != null) {
-            //Ni ideaa porque cargo eso asi.
-            usuario = per;
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+                usuario = per;
+                rolSeleccionado = usuario.getRolList().get(0);
+                int rolCompare = rolSeleccionado.getIdROL();
+            if (rolCompare==101010) {
+                //Ni ideaa porque cargo eso asi.
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+                //retorna un valor, esto es del login original
+                url = "protegido/index?faces-redirect=true";
+            } else if (rolCompare==101011) {
+//Ni ideaa porque cargo eso asi.
+                usuario = per;
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+                //retorna un valor, esto es del login original
+                rolSeleccionado = usuario.getRolList().get(0);
+                url = "protegido/index?faces-redirect=true";
+            } else if (rolCompare==101012) {
+//Ni ideaa porque cargo eso asi.
+                usuario = per;
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+                //retorna un valor, esto es del login original
+                rolSeleccionado = usuario.getRolList().get(0);
+                url = "protegido/index?faces-redirect=true";
+            } else if (rolCompare==101013) {
+//Ni ideaa porque cargo eso asi.
+                usuario = per;
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
+                //retorna un valor, esto es del login original
+                rolSeleccionado = usuario.getRolList().get(0);
+                url = "protegido/index?faces-redirect=true";
+            }
 
-            //retorna un valor, esto es del login original
-            rolSeleccionado = usuario.getRolList().get(0);
-            return "protegido/index?faces-redirect=true";
         } else {
-            
+
             //Esta mal los datos de login retoran mensaje de error
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrect Username and Passowrd",
                             "Please enter correct username and Password"));
-            return "login";
+            url = "login";
         }
+        return url;
     }
 
     //Para cerrar la sesion efectivamente necesita eliminar todo dato cargado en las variables
