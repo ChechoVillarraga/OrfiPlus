@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/src/java/com/orfi/log/Login.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/src/java/com/orfi/log/LoginFilter.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/entity/persona/View.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/success.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/AdminJoya.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/entity/orden/List.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/entity/persona/List.xhtml</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/WEB-INF/template/template.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/AdminReserva.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/entity/joya/List.xhtml</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/index.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/unsuccess.xhtml</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/github/OrfiPlusWeb/web/protegido/AdminUsu.xhtml</file>
         </group>
     </open-files>
 </project-private>
