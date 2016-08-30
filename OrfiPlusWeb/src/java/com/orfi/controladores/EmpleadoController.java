@@ -48,7 +48,9 @@ public class EmpleadoController implements Serializable {
             personaFacade.create(persona);
 
         } catch (Exception e) {
-e.getMessage("lol")
+            e.printStackTrace();
+        } finally {
+            System.out.println("Error en envio de datos");
         }
     }
 

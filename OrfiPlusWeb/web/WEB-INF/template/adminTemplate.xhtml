@@ -14,7 +14,7 @@
 
         <h:outputScript name="jquery-1.12.0.min.js"  library="js" target="body"/>
         <h:outputScript name="bootstrap.js"  library="js"/>
-        <title>OrfiPlus ROOT - <ui:insert name="title"></ui:insert></title>
+        <title>Administrador - <ui:insert name="title"></ui:insert></title>
     </h:head>
 
     <h:body>
@@ -31,36 +31,18 @@
                             <nav class="top-nav">
                                 <ul class="top-nav">
                                     <li><a href="#">Inicio </a></li>
-                                    <li><a href="root/index.xhtml">CRUD</a></li>
+                                    <li><a href="admin/addEmploy.xhtml">Empleados</a>
+                                        <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">HTML</a></li>
+                                            <li><a href="#">CSS</a></li>
+                                            <li><a href="#">JavaScript</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="admin/addEmploy.xhtml">Joyas Solicitadas</a></li>
                                     <li><a href="admin/addEmploy.xhtml">Añadir Empleado</a></li>
-
+                                    <li><a href="admin/addEmploy.xhtml">Añadir Empleado</a></li>
                                     <li><a>#{login.rolSeleccionado.rol}</a></li>                   
-
-                                    <c:forEach items="#{login.rolSeleccionado.permisoList}" var="permiso">
-                                        <c:if test="#{empty permiso.PERMISOSidPERMISOS and empty permiso.permisoList}">
-                                        <!-- <li><h:link outcome="#{permiso.urlPermisos}" value="#{permiso.permiso}" /></li>-->
-                                            <li><a href="#{permiso.urlPermisos}" >#{permiso.permiso}</a></li>
-                                        </c:if>
-                                        <c:if test="#{empty permiso.PERMISOSidPERMISOS and not empty permiso.permisoList}">
-                                            <h:selectOneMenu >
-                                                <f:selectItems value="#{login.usuario.rolList}" var="i" itemValue="#{i.idROL}" itemDescription="#{i.descripcions}">
-
-                                                </f:selectItems>
-                                            </h:selectOneMenu>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#{permiso.urlPermisos}">
-                                                    #{permiso.permiso} <span class="caret"></span></a>
-                                                <ul class="dropdown-menu">
-
-
-                                                    <li><a href="#">Page 1-1</a></li>
-                                                    <li><a href="#">Page 1-2</a></li>
-                                                    <li><a href="#">Page 1-3</a></li>
-                                                </ul>
-                                            </li>
-                                        </c:if>
-
-                                    </c:forEach>
                                 </ul>
                                 <h:link id="pull">
                                     <h:graphicImage library="images" name="menu-icon.png" alt="Imagen Menu"/>
