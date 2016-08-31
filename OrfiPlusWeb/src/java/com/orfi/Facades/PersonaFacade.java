@@ -32,6 +32,20 @@ public class PersonaFacade extends AbstractFacade<Persona> {
     public PersonaFacade() {
         super(Persona.class);
     }
+    
+    public List<Persona> consultarPersonas() {
+        List<Persona> persona = null;
+        try {
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findAll", Persona.class);
+            persona = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            System.out.println("Error en envio de datos");
+        }
+
+        return persona;
+    }
 
     public Persona validate(String user, String password) {
         Persona persona = null;

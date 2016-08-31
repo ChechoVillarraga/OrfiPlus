@@ -7,40 +7,94 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <head>
-        <title>TODO supply a title</title>
+        <title>Registrarse en OrfiPlus</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="screen.css" library="css"/>
+        <h:outputScript name="jquery-2.1.1.min.js" library="js" ></h:outputScript>
+        <h:outputScript name="jquery.validate.js" library="js" ></h:outputScript>
+        <h:outputScript name="validator.js" library="js" ></h:outputScript>
     </head>
     <body>
         <f:view>
-
-
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Registrate en Orfi Plus"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdPERSONAS:" for="idPERSONAS" />
-                    <h:inputText id="idPERSONAS" value="#{EmpleadoController.idPERSONAS}" title="IdPERSONAS" required="true" requiredMessage="Se debe ingresar la cedula"/>
+
+                    <h:outputLabel value="Numero Cedula:" for="idPERSONAS" />
+                    <h:inputText 
+                        id="idPERSONAS" 
+                        value="#{clienteController.persona.idPERSONAS}" 
+                        title="IdPERSONAS" 
+                        maxlength="30"
+                        />
+
                     <h:outputLabel value="Nombres:" for="nombres" />
-                    <h:inputText id="nombres" value="#{EmpleadoController.nombres}" title="Nombres" />
+                    <h:inputText 
+                        id="nombres" 
+                        value="#{clienteController.persona.nombres}" 
+                        title="Nombres" 
+                        maxlength="30"
+                        />
+
                     <h:outputLabel value="Apellidos:" for="apellidos" />
-                    <h:inputText id="apellidos" value="#{EmpleadoController.apellidos}" title="Apellidos" />
-                    <h:outputLabel value="Correoe:" for="correoe" />
-                    <h:inputText id="correoe" value="#{EmpleadoController.correoe}" title="Correoe" />
-                    <h:outputLabel value="Password:" for="password" />
-                    <h:inputText id="password" value="#{EmpleadoController.password}" title="Password" />
+                    <h:inputText 
+                        id="apellidos" 
+                        value="#{clienteController.persona.apellidos}" 
+                        title="Apellidos" 
+                        maxlength="30"
+                        />
+
+                    <h:outputLabel value="Correo Electronico:" for="correoe" />
+                    <h:inputText 
+                        id="correoe" 
+                        value="#{clienteController.persona.correoe}" 
+                        title="Correoe" 
+                        maxlength="200"
+                        />
+
+                    <h:outputLabel value="Contraseña:" for="password" />
+                    <h:inputSecret
+                        id="password" 
+                        value="#{clienteController.persona.password}" 
+                        title="Password" 
+                        label="Contraseña"
+                        maxlength="20"
+                        />
+
+                    <h:outputLabel value="Confirmar Contraseña:" for="conPassword"/>
+                    <h:inputSecret
+                        id="conPassword"
+                        value="#{clienteController.confirmarPsw}"
+                        title="Password" 
+                        maxlength="20"
+                        />
+
                     <h:outputLabel value="Telefonos:" for="telefonos" />
-                    <h:inputText id="telefonos" value="#{EmpleadoController.telefonos}" title="Telefonos" />
-                    <h:outputLabel value="Estadoinfo:" for="estadoinfo" />
-                    <h:inputText id="estadoinfo" value="#{EmpleadoController.estadoinfo}" title="Estadoinfo" />
-                    <h:outputLabel value="FechaCreacion:" for="fechaCreacion" />
-                    <h:inputText id="fechaCreacion" value="#{EmpleadoController.fechaCreacion}" title="FechaCreacion" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <h:inputText 
+                        id="telefonos" 
+                        value="#{clienteController.persona.telefonos}" 
+                        title="Telefonos" 
+                        maxlength="30"
+                        />
+
                 </h:panelGrid>
-                <h:commandLink value="Registrar" actionListener="#{empleadoController.registrarUsuario()}"/>
+                <h:commandButton 
+                    actionListener="#{clienteController.registrarCliente()}"
+                    value="Registrarme"
+                    />
+                <h:button 
+                    value="cancelar"
+                    />
             </h:form>
         </f:view>
+        <script>
+            $("#commentForm").validate();
+        </script>
+
+
 
 
     </body>
