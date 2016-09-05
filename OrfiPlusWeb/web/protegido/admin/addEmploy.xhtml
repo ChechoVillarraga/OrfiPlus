@@ -15,51 +15,62 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:form>
-                    <h:panelGroup>
-                        <p:panelGrid columns="2" columnClasses="column">
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_idPERSONAS}" for="idPERSONAS" />
-                            <p:inputText id="idPERSONAS" value="#{personaController.selected.idPERSONAS}" title="#{myBundle.CreatePersonaTitle_idPERSONAS}" required="true" requiredMessage="#{myBundle.CreatePersonaRequiredMessage_idPERSONAS}"/>
+                <f:view>
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_nombres}" for="nombres" />
-                            <p:inputText id="nombres" value="#{personaController.selected.nombres}" title="#{myBundle.CreatePersonaTitle_nombres}" size="30" maxlength="30"/>
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_apellidos}" for="apellidos" />
-                            <p:inputText id="apellidos" value="#{personaController.selected.apellidos}" title="#{myBundle.CreatePersonaTitle_apellidos}" size="30" maxlength="30"/>
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2" id="matchGrid">
+                            <h:outputLabel value="Cedula:" for="idPERSONAS" />
+                            <h:inputText id="idPERSONAS" value="#{empleadoController.persona.idPERSONAS}" title="IdPERSONAS" required="true" requiredMessage="The IdPERSONAS field is required."/>
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_correoe}" for="correoe" />
-                            <p:inputText id="correoe" value="#{personaController.selected.correoe}" title="#{myBundle.CreatePersonaTitle_correoe}" size="200" maxlength="200"/>
+                            <h:outputLabel value="Nombres:" for="nombres" />
+                            <h:inputText id="nombres" value="#{empleadoController.persona.nombres}" title="Nombres" />
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_password}" for="password" />
-                            <p:inputText id="password" value="#{personaController.selected.password}" title="#{myBundle.CreatePersonaTitle_password}" size="20" maxlength="20"/>
+                            <h:outputLabel value="Apellidos:" for="apellidos" />
+                            <h:inputText id="apellidos" value="#{empleadoController.persona.apellidos}" title="Apellidos" />
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_telefonos}" for="telefonos" />
-                            <p:inputText id="telefonos" value="#{personaController.selected.telefonos}" title="#{myBundle.CreatePersonaTitle_telefonos}"/>
+                            <h:outputLabel value="Telefonos:" for="telefonos" />
+                            <h:inputText id="telefonos" value="#{empleadoController.persona.telefonos}" title="Telefonos" />
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_estadoinfo}" for="estadoinfo" />
-                            <p:selectBooleanCheckbox id="estadoinfo" value="#{personaController.selected.estadoinfo}" />
+                            <h:outputLabel value="Correo electronico:" for="correoe" />
+                            <h:inputText id="correoe" value="#{empleadoController.persona.correoe}" title="Correoe" />
 
-                            <p:outputLabel value="#{myBundle.CreatePersonaLabel_fechaCreacion}" for="fechaCreacion" />
-                            <p:calendar id="fechaCreacion" pattern="MM/dd/yyyy" value="#{personaController.selected.fechaCreacion}" title="#{myBundle.CreatePersonaTitle_fechaCreacion}"  showOn="button"/>
+                            <h:outputLabel for="pwd1" value="Contraseña:" />
+                            <p:password 
+                                id="pwd1" 
+                                value="#{empleadoController.persona.password}" 
+                                match="pwd2" 
+                                label="Contraseña" 
+                                required="true" />
 
-                            <p:outputLabel  value="#{myBundle.CreatePersonaLabel_rolList}" for="rolList"  />
-                            <p:selectManyMenu  id="rolList" value="#{personaController.selected.rolList}"  converter="rolConverter">
-                                <f:selectItems value="#{rolController.items}" 
+                            <h:outputLabel for="pwd2" value="Confirmar contraseña:" />
+                            <p:password 
+                                id="pwd2" 
+                                label="Confirmar contraseña" 
+                                required="true" />
+
+                            <p:outputLabel  value="" for="rolList"  />
+                            <p:selectManyMenu  id="rolList" value="#{empleadoController.persona.rolList}"  converter="rolConverter">
+                                <f:selectItems value="#{empleadoController.persona.rolList}" 
                                                var="rolListItem"
                                                itemValue="#{rolListItem}"
                                                itemLabel="#{rolListItem.rol.toString()}"
                                                />
-
                             </p:selectManyMenu>
-                        </p:panelGrid>
-                        <p:commandButton 
-                            actionListener="#{personaController.saveNew}" 
-                            value="Guardar Empleado" 
-                            >
-                        </p:commandButton>
-                    </h:panelGroup>
-                </h:form>
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+
+
+                <p:commandButton 
+                    actionListener="#{personaController.saveNew}" 
+                    value="Guardar Empleado" 
+                    />
+
+
             </ui:define>
 
         </ui:composition>

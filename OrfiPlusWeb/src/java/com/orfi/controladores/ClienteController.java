@@ -36,6 +36,8 @@ public class ClienteController implements Serializable {
         persona = new Persona();
 
     }
+    
+    
 
     public Persona getPersona() {
         return persona;
