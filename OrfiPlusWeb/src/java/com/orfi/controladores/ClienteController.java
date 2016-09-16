@@ -6,26 +6,33 @@
 package com.orfi.controladores;
 
 import com.orfi.Facades.PersonaFacade;
+import com.orfi.Facades.RolFacade;
 import com.orfi.entity.Persona;
+import com.orfi.entity.Rol;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author seanv
  */
 @Named(value = "clienteController")
-@SessionScoped
+@RequestScoped
 public class ClienteController implements Serializable {
 
     private String confirmarPsw;
     
     @EJB
     private PersonaFacade personaFacade;
+    @EJB
+    private RolFacade rolFacade;
     private Persona persona;
 
     /**
@@ -49,7 +56,10 @@ public class ClienteController implements Serializable {
 
     public void registrarCliente() {
         try {
-
+            Rol rol = rolFacade.find(101011);
+            persona.setRolList(new ArrayList<>());
+            persona.getRolList().add(rol);
+            persona.setFechaCreacion(new Date());
             personaFacade.create(persona);
 
         } catch (Exception e) {

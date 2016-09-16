@@ -6,6 +6,7 @@
 
 
 $().ready(function(){
+    /*
 $('form').submit(function(e){
 	e.preventDefault();
 	var  data = $(this).serializeArray();
@@ -26,4 +27,5 @@ $('form').submit(function(e){
 	});
 
 });
+*/
 });
