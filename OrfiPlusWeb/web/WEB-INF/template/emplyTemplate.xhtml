@@ -22,7 +22,7 @@
         <div id="top" class="top">
             <ui:insert name="top">
                 <div id="home" class="header">
-                    <div class="top-headerA">
+                    <div class="top-headerE">
                         <div class="container">
                             <div class="logo lobster letra">
                                 <h:graphicImage library="images" name="logom.png" alt="Orfi Plus Logo"/>
@@ -30,8 +30,16 @@
 
                             <nav class="top-nav">
                                 <ul class="top-nav">
-                                    <li><a href="employer/index.xhtml">Inicio </a></li>
-                                    <li><a>#{login.rolSeleccionado.rol}</a></li>                   
+                                    <h:form>
+                                        
+                                   
+                                    <li><a href="index.xhtml">Inicio</a></li>
+                                    <li><a href="listOrden.xhtml">Ordenes</a></li>
+                                    <li><a href="joyas.xhtml">Joyas</a></li>
+                                    <li><a href="material.xhtml">Materiales</a></li>
+                                    <li><h:commandLink action="#{login.logout()}" value="Salir de Orfi"/></li>
+                                    <li><a>#{login.rolSeleccionado.rol}</a></li> 
+                                     </h:form>
                                 </ul>
                                 <h:link id="pull">
                                     <h:graphicImage library="images" name="menu-icon.png" alt="Imagen Menu"/>

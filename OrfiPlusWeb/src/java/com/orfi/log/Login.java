@@ -101,7 +101,7 @@ public class Login implements Serializable {
                 //Ni ideaa porque cargo eso asi.
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", per);
                 //retorna un valor, esto es del login original
-                url = "protegido/admin/addEmploy?faces-redirect=true";
+                url = "protegido/admin/inicio?faces-redirect=true";
             } else if (rolCompare == 101011) {
 //Ni ideaa porque cargo eso asi.
                 usuario = per;
@@ -140,7 +140,7 @@ public class Login implements Serializable {
 
     //Para cerrar la sesion efectivamente necesita eliminar todo dato cargado en las variables
     public String logout() {
-        String url="/faces/principal.xhtml?faces-redirect=true";
+        String url="/faces/login.xhtml?faces-redirect=true";
         user = "";
         pwd = "";
         rolSeleccionado = null;

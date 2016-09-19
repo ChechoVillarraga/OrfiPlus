@@ -18,6 +18,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -43,6 +45,15 @@ public class ClienteController implements Serializable {
         persona = new Persona();
 
     }
+    private boolean estado;
+
+ public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
     
     
 
@@ -56,17 +67,43 @@ public class ClienteController implements Serializable {
 
     public void registrarCliente() {
         try {
+            
             Rol rol = rolFacade.find(101011);
             persona.setRolList(new ArrayList<>());
             persona.getRolList().add(rol);
             persona.setFechaCreacion(new Date());
             personaFacade.create(persona);
-
+             FacesContext.getCurrentInstance().addMessage(null, new
+         FacesMessage(FacesMessage.SEVERITY_INFO,
+          "Creaciòn", "Se ha registrado corectamente"));
+              estado = true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             System.out.println("Error en envio de datos");
         }
+    }
+    
+    
+     public void ActualizarCliente() {
+        try {
+            
+            
+            personaFacade.edit(persona);
+             FacesContext.getCurrentInstance().addMessage(null, new
+         FacesMessage(FacesMessage.SEVERITY_INFO,
+          "Update", "Se ha Actualizado correctamente"));
+              estado = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Error en envio de datos");
+        }
+    }
+    
+    
+     public void cambiarEstado() {
+        estado = false;
     }
     
     public String cancelar(){

@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Registrarse en OrfiPlus</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,6 +37,9 @@ and open the template in the editor.
     height: 100%;
     padding-top: 60px;
     width: 100%;
+}
+.ax{
+    margin-top: -60px;
 }
 .login-container::before {
     background: -webkit-radial-gradient(center, ellipse cover, rgba(150,214,104,0.9) 0%,rgba(150,214,104,0.9) 1%,rgba(83,115,62,1) 74%,rgba(150,214,104,1) 75%,rgba(136,255,52,1) 100%);
@@ -106,7 +110,7 @@ and open the template in the editor.
                       
                      
         <f:view>
-            <div class="col-sm-offset- col-sm-12">
+            <div class="col-sm-offset- col-sm-12 ax">
             <h:form>
                 
                 <h:panelGrid columns="2">
@@ -116,18 +120,23 @@ and open the template in the editor.
                     <label for="validate-text">Documento</label>
                     <div class="input-group">
                         <h:inputText
-                            
+                            requiredMessage=" ingrese un documento"
+                        validatorMessage="ingresa un numero valido"
+                        required="true"
                         id="idPERSONAS" 
                         value="#{clienteController.persona.idPERSONAS}" 
                         title="IdPERSONAS" 
                         maxlength="30"
                         class="form-control"
                         
-                        />
+                        >
+                       
+                        </h:inputText>
                         
                        
                     </div>
-                    
+          <h:message for="idPERSONAS" style="color:blue"></h:message>
+
                     </div>
 
                     
@@ -136,57 +145,82 @@ and open the template in the editor.
                     <label for="validate-text">Nombres</label>
                     <div class="input-group" >
                         <h:inputText 
+                        required="true"
+                        requiredMessage=" ingrese su nombre"
+                        validatorMessage="ingresa un nombre valido"    
                         id="nombres" 
                         value="#{clienteController.persona.nombres}" 
                         title="Nombres" 
                         maxlength="30"
                         class="form-control"
-                        />
+                        >
+                        <f:validateLength for="nombres" minimum="3" maximum="20" />	
+                        </h:inputText>
                        
                     </div>
+                    <h:message for="nombres" style="color:blue"></h:message>
                     </div>
                     
                    <div class="form-group">  
                     <label for="validate-text">Apellidos</label>
                     <div class="input-group" >
                        <h:inputText 
+                        required="true"
+                        requiredMessage=" ingrese sus Apellidos"
+                        validatorMessage="ingresa un apellido valido"   
                         id="apellidos" 
                         value="#{clienteController.persona.apellidos}" 
                         title="Apellidos" 
                         maxlength="30"
                         class="form-control"
-                        />
+                        >
+                       <f:validateLength for="nombres" minimum="2" maximum="30" />
+                       </h:inputText>
                        
                     </div>
+                    <h:message for="apellidos" style="color:blue"></h:message>
                    </div>
                     
                     <div class="form-group">  
                     <label for="validate-text">Correo</label>
                     <div class="input-group" >
                        <h:inputText 
+                        required="true"
+                        requiredMessage="Por Favor ingrese su correo"
+                        validatorMessage="ingresa un correo valido"   
                         id="correoe" 
                         value="#{clienteController.persona.correoe}" 
                         title="Correoe" 
                         maxlength="200"
                         class="form-control"
-                        />
+                        >
+                       <f:validateRegex	pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                       </h:inputText>
                        
                     </div>
+                    <h:message for="correoe" style="color:blue"></h:message>
                     </div>
                     
                    <div class="form-group">  
                     <label for="validate-text">Contraseña</label>
                     <div class="input-group" >
                        <h:inputSecret
+                        required="true"
+                        requiredMessage=" ingrese una contraseña"
+                        validatorMessage="ingresa un contraseña valida" 
                         id="password" 
                         value="#{clienteController.persona.password}" 
                         title="Password" 
                         label="Contraseña"
                         maxlength="20"
                         class="form-control"
-                        />
+                        >
+                       <f:validateLength for="password" minimum="6" maximum="20" />
+                       </h:inputSecret>
                        
                     </div>
+                        <h:message for="password" style="color:blue"></h:message>
+
                    </div>  
                     
                     
@@ -194,6 +228,9 @@ and open the template in the editor.
                     <label for="validate-text">Confirmar Contraseña</label>
                     <div class="input-group" >
                        <h:inputSecret
+                        required="true"
+                        requiredMessage="confirme su contraseña"
+                        validatorMessage="ingresa un contraseña valida" 
                         id="conPassword"
                         value="#{clienteController.confirmarPsw}"
                         title="Password" 
@@ -202,20 +239,27 @@ and open the template in the editor.
                         />
                        
                     </div>
+                    <h:message for="conPassword" style="color:blue"></h:message>
                     </div>
                     
                     <div class="form-group">  
                     <label for="validate-text">Telefonos</label>
                     <div class="input-group" >
                       <h:inputText 
+                           required="true"
+                        validatorMessage="ingresa un numero valido"
+                        requiredMessage=" ingrese un telefono"
                         id="telefonos" 
                         value="#{clienteController.persona.telefonos}" 
                         title="Telefonos" 
                         maxlength="30"
                         class="form-control"
-                        />
+                        >
+                     
+                      </h:inputText>
                        
                     </div>
+                    <h:message for="telefonos" style="color:blue"></h:message>
                     </div>
                    
 
@@ -226,13 +270,26 @@ and open the template in the editor.
                     value="Registrarme"
                     class="btn btn-warning"
                     actionListener="#{clienteController.registrarCliente()}"
+                    
                         >
                 </h:commandButton>
+                    <c:if test="#{clienteController.estado==true}">
+                        <script language="JavaScript" type="text/javascript">
+                            $(document).ready(function () {
+                                swal({type: "success", title: "¡Registro con exito!", confirmButtonText: "Aceptar", showConfirmButton: true, allowOutsideClick: true, time: 3000}, function () {
+                                    window.location.href = "login.xhtml";
+                                });
+                            });
+                        </script> </c:if>
+  #{clienteController.cambiarEstado()}
+                       
                 <h:button 
                     value="cancelar"
                     class="btn btn-danger"
                     />
                  </div>
+       <p:growl id="mensaje" autoUpdate="false" severity="info,fatal,warn" showSummary="true" showDetail="true"/>
+
             </h:form>
             </div>
         </f:view>
