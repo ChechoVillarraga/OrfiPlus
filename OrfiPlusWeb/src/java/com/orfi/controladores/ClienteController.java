@@ -84,6 +84,25 @@ public class ClienteController implements Serializable {
         }
     }
     
+    public void registrarEmpleado() {
+        try {
+            
+            Rol rol = rolFacade.find(101012);
+            persona.setRolList(new ArrayList<>());
+            persona.getRolList().add(rol);
+            persona.setFechaCreacion(new Date());
+            personaFacade.create(persona);
+             FacesContext.getCurrentInstance().addMessage(null, new
+         FacesMessage(FacesMessage.SEVERITY_INFO,
+          "Creaciòn", "Se ha registrado corectamente"));
+              estado = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("Error en envio de datos");
+        }
+    }
+    
     
      public void ActualizarCliente() {
         try {
@@ -112,6 +131,11 @@ public class ClienteController implements Serializable {
     
     public List<Persona> verClientesController() {
         List<Persona> per = personaFacade.consultarPersonas();
+        return per;
+    }
+    
+      public List<Persona> getAll() {
+        List<Persona> per = personaFacade.findAll();
         return per;
     }
 

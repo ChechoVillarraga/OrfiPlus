@@ -14,13 +14,18 @@
         <h:outputStylesheet name="sb-admin-2.css" library="css"/>
         <h:outputStylesheet name="awesome.min.css" library="css"/>
         <h:link hreflang="https://fonts.googleapis.com/css?family=Lobster"/>
+        <link href="../../resources/css/sweetalert.css" rel="stylesheet" type="text/css"/>
         <link href="../../resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="../../resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <script src="../../resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
         <script src="../../resources/js/bootstrap.js" type="text/javascript"></script>
+        <link href="../../resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
         <h:outputScript name="jquery-1.12.0.min.js"  library="js" target="body"/>
         <h:outputScript name="bootstrap.js"  library="js"/>
+        <script src="../../resources/css/sweetalert.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
         <title>Administrador - <ui:insert name="title"></ui:insert></title>
     </h:head>
 
@@ -38,14 +43,26 @@
                             <nav class="top-nav">
                                 <ul class="top-nav">
                                      <h:form>
-                                    <li><a href="index.xhtml">Inicio </a></li>
-                                    <li><a href="crearJoya.xhtml">CrearEmpleado</a></li>
+                                    <li><a href="inicio.xhtml">Inicio</a></li>
+                                  
                                     <li><a href="consultarClientes.xhtml">usuarios</a></li>
-                                    <li><a href="addMaterial.xhtml">Agregar Material</a></li>
+                                    
+                                      <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Crear <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="addMaterial.xhtml">Material</a></li>
+                                <li><a href="addEmploy.xhtml">Nuevo Empleado</a></li>
+                               <li><a href="addDisenio.xhtml">Nuevo Diseño</a></li>
+                            </ul>
+                        </li>
+                                   <li><a href="comunicacion.xhtml">E-mail</a></li>
+                                  
+                                  
+
                                     
                                    
                                     <li><h:commandLink action="#{login.logout()}" value="Salir"/></li>
-                                    <li><a>#{login.rolSeleccionado.rol}</a></li>
+                                    <li class="active"><a>#{login.rolSeleccionado.rol}</a></li>
 
                                      </h:form>
                                     

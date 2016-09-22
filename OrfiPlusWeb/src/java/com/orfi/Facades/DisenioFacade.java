@@ -6,9 +6,11 @@
 package com.orfi.Facades;
 
 import com.orfi.entity.Disenio;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -28,5 +30,16 @@ public class DisenioFacade extends AbstractFacade<Disenio> {
     public DisenioFacade() {
         super(Disenio.class);
     }
-    
+     public List<Disenio> consultarDiseno() {
+        List<Disenio> disenio = null;
+        try {
+            TypedQuery<Disenio> query = em.createNamedQuery("Disenio.findAll", Disenio.class);
+            disenio = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            System.out.println("Error en envio de datos");
+        }
+        return disenio;
+    }
 }

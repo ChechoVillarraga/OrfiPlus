@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -114,6 +115,9 @@ public class Disenio implements Serializable {
     public void setUrlDisenio(String urlDisenio) {
         this.urlDisenio = urlDisenio;
     }
+    
+    
+    
 
     @XmlTransient
     public List<Joya> getJoyaList() {

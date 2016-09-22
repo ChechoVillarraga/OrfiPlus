@@ -15,9 +15,12 @@
 
             <ui:define name="content">
                 <f:view>
+                    <div class="container">
+                        
+                    
                     <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <h:dataTable value="#{clienteController.verClientesController()}" var="item">
+                        <h1><h:outputText value="Usuarios"/></h1>
+                        <h:dataTable value="#{clienteController.verClientesController()}" var="item" class="tab-content table-bordered table table-hover table-responsive table-striped">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdPERSONAS"/>
@@ -42,24 +45,14 @@
                                 </f:facet>
                                 <h:outputText value="#{item.correoe}"/>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Password"/>
-                                </f:facet>
-                                <h:outputText value="#{item.password}"/>
-                            </h:column>
+                            
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Telefonos"/>
                                 </f:facet>
                                 <h:outputText value="#{item.telefonos}"/>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Estadoinfo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.estadoinfo}"/>
-                            </h:column>
+                           
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaCreacion"/>
@@ -70,6 +63,11 @@
                             </h:column>
                         </h:dataTable>
                     </h:form>
+       <h:form id="exportForm">
+           
+            <h:commandButton value="Reporte Usuarios" actionListener="#{reporteController.exportarPDF()}" class="btn btn-warning btn-lg" />
+        </h:form>
+                        </div>
                 </f:view>
             </ui:define>
 
