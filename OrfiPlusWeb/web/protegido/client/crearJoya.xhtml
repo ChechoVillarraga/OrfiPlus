@@ -15,67 +15,111 @@
             </ui:define>
 
             <ui:define name="content">
-                <f:view>
+
+                <div class="container" >
+
+                    <f:view>
 
 
-                    <h:form>
-                        <h1><h:outputText value="Solicitar una Joya"/></h1>
-                        <p:panelGrid columns="4">
+                        <h:form>
+                            <h1><h:outputText value="Solicitar una Joya"/></h1>
+                            <p:panelGrid columns="4">
 
-                            <h:outputLabel value="Tipo de Joya" for="idTipo" />
-                            <h:selectOneMenu id="idTipo" value="#{crearJoyaController.joyaFacade}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{crearJoyaController.joyas}"/>
-                            </h:selectOneMenu>
+                                <p:outputLabel value="Tipo de Joya" for="idTipo" />
+                                <h:selectOneMenu 
+                                    id="idTipo" 
+                                    value="#{crearJoyaController.joya.idTipo}" 
+                                    >
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItems 
+                                        value="#{tipoController.all}"
+                                        var="tipo"
+                                        itemLabel="#{tipo.tipo}"
+                                        />
+                                </h:selectOneMenu>
 
-                            <p:outputLabel value="Gramaje:" for="gramaje" />
-                            <p:inputText id="gramaje" value="#{crearJoyaController.entidadJoya.gramaje}" title="Gramaje" />
+                                <p:outputLabel value="Selecciona un diseño:" for="idDisenio" />
+                                <h:selectOneMenu 
+                                    id="idDisenio" 
+                                    value="#{crearJoyaController.joya.idDisenio}" 
+                                    >
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItems 
+                                        value="#{disenioController.all}"
+                                        var="disenio"
+                                        itemLabel="#{disenio.disenio}"
+                                        />
+                                </h:selectOneMenu>
 
-                            <p:outputLabel value="Talla:" for="talla" />
-                            <p:inputText id="talla" value="#{crearJoyaController.entidadJoya.talla}" title="Talla" />
+                                <p:outputLabel value="Selecciona material:" for="idMaterial" />
+                                <h:selectOneMenu 
+                                    id="idMaterial" 
+                                    value="#{crearJoyaController.joya.idMaterial}" 
+                                    >
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItems 
+                                        value="#{materialController.all}"
+                                        var="material"
+                                        itemLabel="#{material.material}"
+                                        />
+                                </h:selectOneMenu>
 
-                            <p:outputLabel value="Inscripcion:" for="inscripcion" />
-                            <p:inputText id="inscripcion" value="#{crearJoyaController.entidadJoya.inscripcion}" title="Inscripcion" />
+                                <p:outputLabel value="Gramaje:" for="gramaje" />
+                                <h:selectOneMenu 
+                                    id="gramaje" 
+                                    value="#{crearJoyaController.joya.gramaje}" 
+                                    >
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItem itemLabel="10 K" itemValue="10" />
+                                    <f:selectItem itemLabel="14 K" itemValue="14" />
+                                    <f:selectItem itemLabel="18 K" itemValue="18" />
+                                    <f:selectItem itemLabel="22 K" itemValue="22" />
+                                </h:selectOneMenu>
 
-                            <p:outputLabel value="Cantidad:" for="cantidad" />
-                            <p:inputText id="cantidad" value="#{crearJoyaController.entidadJoya.cantidad}" title="Cantidad" />
+                                <p:outputLabel value="Talla:" for="talla" />
+                                <h:selectOneMenu 
+                                    id="talla" 
+                                    value="#{crearJoyaController.joya.talla}" 
+                                    >
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItem itemLabel="3" itemValue="10" />
+                                    <f:selectItem itemLabel="3 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="4" itemValue="10" />
+                                    <f:selectItem itemLabel="4 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="5" itemValue="10" />
+                                    <f:selectItem itemLabel="5 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="6" itemValue="10" />
+                                    <f:selectItem itemLabel="6 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="7" itemValue="10" />
+                                    <f:selectItem itemLabel="7 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="8" itemValue="10" />
+                                    <f:selectItem itemLabel="8 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="9" itemValue="10" />
+                                    <f:selectItem itemLabel="9 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="10" itemValue="10" />
+                                    <f:selectItem itemLabel="10 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="11" itemValue="10" />
+                                    <f:selectItem itemLabel="11 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="12" itemValue="10" />
+                                    <f:selectItem itemLabel="12 1/2" itemValue="14" />
+                                    <f:selectItem itemLabel="13" itemValue="10" />
+                                    <f:selectItem itemLabel="13 1/2" itemValue="14" />
 
-                            <p:outputLabel value="ValorUnitario:" for="valorUnitario" />
-                            <p:inputText id="valorUnitario" value="#{crearJoyaController.entidadJoya.valorUnitario}" title="ValorUnitario" />
+                                </h:selectOneMenu>
 
-                            <p:outputLabel value="ValorTotal:" for="valorTotal" />
-                            <p:inputText id="valorTotal" value="#{crearJoyaController.entidadJoya.valorTotal}" title="ValorTotal" />
-
-                            <p:outputLabel value="IdDisenio:" for="idDisenio" />
-                            <p:selectOneMenu id="idDisenio" value="#{crearJoyaController.entidadJoya.idDisenio}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="IdEstado:" for="idEstado" />
-                            <p:selectOneMenu id="idEstado" value="#{crearJoyaController.entidadJoya.idEstado}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="IdMaterial:" for="idMaterial" />
-                            <p:selectOneMenu id="idMaterial" value="#{crearJoyaController.entidadJoya.idMaterial}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="IdOrden:" for="idOrden" />
-                            <p:selectOneMenu id="idOrden" value="#{crearJoyaController.entidadJoya.idOrden}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
+                                <p:outputLabel value="Inscripcion:" for="inscripcion" />
+                                <p:inputText id="inscripcion" value="#{crearJoyaController.joya.inscripcion}" title="Inscripcion" />
 
 
 
-                        </p:panelGrid>
-                    </h:form>
-                </f:view>
 
+                                <p:outputLabel value="Cantidad:" for="cantidad" />
+                                <p:inputText id="cantidad" value="#{crearJoyaController.joya.cantidad}" title="Cantidad" />
+
+                            </p:panelGrid>
+                        </h:form>
+                    </f:view>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

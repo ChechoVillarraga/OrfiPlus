@@ -5,44 +5,40 @@
  */
 package com.orfi.controladores;
 
-import com.orfi.Facades.DisenioFacade;
+import com.orfi.Facades.EstadoFacade;
 import com.orfi.Facades.JoyaFacade;
-import com.orfi.entity.Disenio;
+import com.orfi.Facades.TipoFacade;
+import com.orfi.entity.Estado;
 import com.orfi.entity.Joya;
-import com.orfi.entity.Orden;
-import com.orfi.entity.Persona;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author seanv
  */
 @Named(value = "crearJoyaController")
-@SessionScoped
+@RequestScoped
 public class CrearJoyaController implements Serializable {
-    
+
     private Joya joya;
-    private Disenio disenio;
-    private List<Disenio> disenios;
-    
+
     @EJB
     private JoyaFacade joyaFacade;
-    private DisenioFacade facadeDisenio;
-    private Orden orden;
+    @EJB
+    private TipoFacade tipoFacade;
+    @EJB
+    private EstadoFacade estadoFacade;
 
-    private List<Joya> joyas = joyaFacade.consultarJoya();
-    /**
-     * Creates a new instance of CrearJoyaController
-     */
-    
     @PostConstruct
     public void init() {
-        joyas = joyaFacade.findAll();
+        joya = new Joya();
 
     }
 
@@ -54,74 +50,25 @@ public class CrearJoyaController implements Serializable {
         this.joya = joya;
     }
 
-    public Disenio getDisenio() {
-        return disenio;
-    }
-
-    public void setDisenio(Disenio disenio) {
-        this.disenio = disenio;
-    }
-
-    public List<Disenio> getDisenios() {
-        return disenios;
-    }
-
-    public void setDisenios(List<Disenio> disenios) {
-        this.disenios = disenios;
-    }
-
-    public JoyaFacade getJoyaFacade() {
-        return joyaFacade;
-    }
-
-    public void setJoyaFacade(JoyaFacade joyaFacade) {
-        this.joyaFacade = joyaFacade;
-    }
-
-    public DisenioFacade getFacadeDisenio() {
-        return facadeDisenio;
-    }
-
-    public void setFacadeDisenio(DisenioFacade facadeDisenio) {
-        this.facadeDisenio = facadeDisenio;
-    }
-
-    public Orden getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Orden orden) {
-        this.orden = orden;
-    }
-
-    public List<Joya> getJoyas() {
-        return joyas;
-    }
-
-    public void setJoyas(List<Joya> joyas) {
-        this.joyas = joyas;
-    }
-
-    
-    
-    
-    public void registrarJoya(){
+    public void registrarJoya() {
         try {
+            joya.setEstadoinfo(Boolean.TRUE);
+            Estado estado = estadoFacade.find(103015);
+            joya.setIdEstado(estado);
             joyaFacade.create(joya);
-            
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Creaciòn", "Se ha registrado corectamente"));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             System.out.println("Error en envio de datos");
         }
+
     }
-    
+
     public List<Joya> verJoyasSolicitadas() {
         List<Joya> joyaObj = joyaFacade.findAll();
         return joyaObj;
     }
-    
 
-    
-    
 }

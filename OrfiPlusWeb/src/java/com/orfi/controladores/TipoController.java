@@ -1,6 +1,10 @@
 package com.orfi.controladores;
 
+import com.orfi.Facades.TipoFacade;
 import com.orfi.entity.Tipo;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -9,6 +13,16 @@ import javax.inject.Inject;
 @Named(value = "tipoController")
 @ViewScoped
 public class TipoController extends AbstractController<Tipo> {
+
+    private Tipo tipo;
+
+    @EJB
+    private TipoFacade tipoFacade;
+
+    @PostConstruct
+    public void init() {
+        tipo = new Tipo();
+    }
 
     public TipoController() {
         // Inform the Abstract parent controller of the concrete Tipo Entity
@@ -26,6 +40,11 @@ public class TipoController extends AbstractController<Tipo> {
             FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Joya_items", this.getSelected().getJoyaList());
         }
         return "/protegido/pages/joya/index";
+    }
+
+    public List<Tipo> getAll() {
+        List<Tipo> li = tipoFacade.findAll();
+        return li;
     }
 
 }
