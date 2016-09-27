@@ -23,7 +23,7 @@ import javax.inject.Named;
  *
  * @author USUARIO
  */
-@Named(value = "materialesVController")
+@Named(value = "materialescController")
 @RequestScoped
 public class materialesVController implements Serializable {
     @EJB

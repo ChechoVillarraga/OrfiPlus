@@ -35,7 +35,7 @@
                                         value="#{tipoController.all}"
                                         var="tipo"
                                         itemLabel="#{tipo.tipo}"
-                                        />
+                                        ></f:selectItems>
                                 </h:selectOneMenu>
 
                                 <p:outputLabel value="Selecciona un diseño:" for="idDisenio" />
@@ -43,12 +43,12 @@
                                     id="idDisenio" 
                                     value="#{crearJoyaController.joya.idDisenio}" 
                                     >
-                                    <f:selectItem itemLabel="Selecciona" itemValue="" />
+                                    <f:selectItem itemLabel="Selecciona" itemValue="" ></f:selectItem>
                                     <f:selectItems 
                                         value="#{disenioController.all}"
                                         var="disenio"
                                         itemLabel="#{disenio.disenio}"
-                                        />
+                                        ></f:selectItems>
                                 </h:selectOneMenu>
 
                                 <p:outputLabel value="Selecciona material:" for="idMaterial" />

@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 @Named(value = "tipoController")
 @ViewScoped
