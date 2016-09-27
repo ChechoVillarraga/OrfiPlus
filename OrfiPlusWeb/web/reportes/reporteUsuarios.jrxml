@@ -43,7 +43,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="62" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="2" width="100" height="20" forecolor="#FFFFFF" backcolor="#3333FF" uuid="8c2b10b6-a7fd-4591-8752-70fae19febc4"/>
 				<textElement textAlignment="Center">
@@ -79,30 +79,31 @@
 				</textElement>
 				<text><![CDATA[Telefonos]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="28" y="22" width="100" height="20" uuid="f7ac3682-d028-4764-bc09-dc0cca204efc"/>
-				<textFieldExpression><![CDATA[$F{idPERSONAS}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="162" y="22" width="100" height="20" uuid="ffb4984c-c631-4832-98da-1c13a03c7ad0"/>
-				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="273" y="22" width="100" height="20" uuid="20dbbc1e-af43-48de-b8eb-c468ce42d553"/>
-				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="373" y="22" width="100" height="20" uuid="a706250a-15d1-4ecc-bcf9-f0c9c0b393b8"/>
-				<textFieldExpression><![CDATA[$F{correoe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="487" y="22" width="100" height="20" uuid="73821e63-3748-475c-b482-79f6a4951826"/>
-				<textFieldExpression><![CDATA[$F{telefonos}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="373" y="0" width="100" height="20" uuid="4bcf144b-f248-4e97-93b2-fd4b6817581c"/>
+				<textFieldExpression><![CDATA[$F{correoe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="0" width="100" height="20" uuid="204ba349-da55-404f-ae9d-a610de0c0ce7"/>
+				<textFieldExpression><![CDATA[$F{telefonos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="100" height="20" uuid="e8b6ebc9-32e4-4bcc-97d2-1d5d8b0321de"/>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="100" height="20" uuid="42a82d48-5f4e-4e9b-b70b-bc9462fd976b"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="0" width="100" height="20" uuid="e333f1c1-70a8-4a26-8b04-1a43b3f5da1d"/>
+				<textFieldExpression><![CDATA[$F{idPERSONAS}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

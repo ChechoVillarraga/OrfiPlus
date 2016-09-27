@@ -33,6 +33,7 @@ public class Login implements Serializable {
     @Inject
     private PersonaFacade perFacade;
     private Rol rolSeleccionado;
+ 
 
     public Login() {
         usuario = null;
@@ -151,4 +152,5 @@ public class Login implements Serializable {
         session.invalidate();
         return url;
     }
+  
 }

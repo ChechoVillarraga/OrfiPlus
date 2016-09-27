@@ -104,19 +104,12 @@ public class ClienteController implements Serializable {
     }
     
     
-     public void ActualizarCliente() {
+  
+     public void editar(){
         try {
-            
-            
-            personaFacade.edit(persona);
-             FacesContext.getCurrentInstance().addMessage(null, new
-         FacesMessage(FacesMessage.SEVERITY_INFO,
-          "Update", "Se ha Actualizado correctamente"));
-              estado = true;
+           personaFacade.edit(persona);
         } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("Error en envio de datos");
+            
         }
     }
     

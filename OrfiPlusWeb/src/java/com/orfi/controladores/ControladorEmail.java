@@ -74,7 +74,7 @@ public class ControladorEmail {
             return "inicio";
           
         } else{
-            return "index";
+            return "inicio";
            
         }
     }
