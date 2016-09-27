@@ -1,6 +1,10 @@
 package com.orfi.controladores;
 
+import com.orfi.Facades.JoyaFacade;
+import com.orfi.Facades.OrdenFacade;
+import com.orfi.entity.Joya;
 import com.orfi.entity.Orden;
+import java.util.List;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -9,7 +13,7 @@ import javax.inject.Inject;
 @Named(value = "ordenController")
 @ViewScoped
 public class OrdenController extends AbstractController<Orden> {
-
+private OrdenFacade ordenfacade;
     public OrdenController() {
         // Inform the Abstract parent controller of the concrete Orden Entity
         super(Orden.class);
@@ -40,5 +44,7 @@ public class OrdenController extends AbstractController<Orden> {
         }
         return "/protegido/pages/joya/index";
     }
+    
+     
 
 }

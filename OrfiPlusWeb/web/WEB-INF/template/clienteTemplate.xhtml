@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <title>Ejer. Session - <ui:insert name="title"></ui:insert></title>
+        <link href="../../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/ageneral.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/cmenu.css" rel="stylesheet" type="text/css"/>
+        
+        <script src="../../resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/bootstrap.js" type="text/javascript"></script>
+    </h:head>
+
+
+  <h:body >
+  
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>      
+        
+        
+<style type="text/css">#imgadentro{margin-top: 30px; margin-left: 30px; </style>
+   
+        <div id="home" class="header">
+                <div class="top-header">
+                    <div class="container">
+                    <div class="logo lobster letra">
+                        <img class="ima" src="../../resources/images/logom.png" alt="Orfiplus"/>
+                    </div>
+                    
+                     <nav class="top-nav">
+                        <ul class="top-nav">
+                            <li><a href="" class="scroll">Inicio </a></li>
+                            <li><a href="datospersonales.html" >reservas</a></li>
+                            <li><a href="seguimiento.html" >seguimientos</a></li>
+                            <li><a href="contactos.html">Contáctenos</a></li>
+                            <li><a href="index.html" >Cerrar Sesión</a></li>
+                        </ul>
+                        
+                    </nav>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+<div class="alert alert-success">Bienvenido #{login.usuario.nombres}</div>
+
+
+ </h:body>
+
+</html>

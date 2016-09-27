@@ -10,6 +10,7 @@ import com.orfi.entity.Persona;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
@@ -20,7 +21,7 @@ import javax.ejb.EJB;
 @Named(value = "empleadoController")
 @SessionScoped
 public class EmpleadoController implements Serializable {
-
+Integer selectedItemIndex;
     @EJB
     private PersonaFacade personaFacade;
     private Persona persona;
@@ -41,6 +42,11 @@ public class EmpleadoController implements Serializable {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+     public List<Persona> getAll() {
+        List<Persona> li = personaFacade.findAll();
+        return li;
+    }
+    
 
     public void registrarUsuario() {
         try {

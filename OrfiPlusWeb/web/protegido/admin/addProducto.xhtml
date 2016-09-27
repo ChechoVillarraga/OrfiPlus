@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link href="../../resources/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+        <script src="../../resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
+        <script src="../../resources/css/sweetalert.min.js" type="text/javascript"></script>
+    </h:head>
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/adminTemplate.xhtml">
+
+            <ui:define name="title">
+                Ingresar NuevoProducto
+            </ui:define>
+
+            <ui:define name="content">
+
+                <f:view>
+                    <div class="container">
+                        
+                   
+                     <h:form>
+                         <div class="form-group col-md-6">       
+                         
+                             <h:outputLabel>Numero Orden</h:outputLabel>           
+ <h:selectOneMenu id="idOrden" class="form-control col-xs-8"
+                  value="#{ProductosController.joya.idOrden}">
+     <f:selectItems value="#{OrdenesController.all}" var="tipo" itemLabel="#{tipo.idORDEN}" ></f:selectItems>
+ </h:selectOneMenu>
+</div>
+                         
+              <div class="form-group col-md-6">       
+                         
+                             <h:outputLabel>Material</h:outputLabel>           
+ <h:selectOneMenu id="idMaterial" class="form-control col-xs-8"
+                  value="#{ProductosController.joya.idMaterial}">
+     <f:selectItems value="#{materialesVController.all}" var="material" itemLabel="#{material.material}" ></f:selectItems>
+ </h:selectOneMenu>
+</div>  
+                         
+  <div class="form-group col-md-6">       
+                         
+  <h:outputLabel>Diseño</h:outputLabel>           
+ <h:selectOneMenu id="idDisenio" class="form-control col-xs-8"
+                  value="#{ProductosController.joya.idDisenio}">
+     <f:selectItems value="#{ControllerDisenios.all}" var="diseno" itemLabel="#{diseno.disenio}" ></f:selectItems>
+ </h:selectOneMenu>
+</div>   
+             <div class="form-group col-md-6">       
+                     
+  <h:outputLabel>Tipo</h:outputLabel>           
+ <h:selectOneMenu id="idTipo" class="form-control col-xs-8"
+                  value="#{ProductosController.joya.idTipo}">
+     <f:selectItems value="#{ControllerTipo.all}" var="tipos" itemLabel="#{tipos.tipo}" ></f:selectItems>
+ </h:selectOneMenu>
+</div>
+   <div class="form-group col-md-6" >       
+                     
+  <h:outputLabel>Estado</h:outputLabel>           
+ <h:selectOneMenu id="idEstado" class="form-control col-xs-8"
+                  value="#{ProductosController.joya.idEstado}">
+     <f:selectItems value="#{ControllerEstado.all}" var="estado" itemLabel="#{estado.descripcion}" ></f:selectItems>
+ </h:selectOneMenu>
+</div> 
+                         <div class="form-group col-md-6">
+                             <label for="validate-text">Gramaje</label>
+                        <h:inputText
+                            requiredMessage=" ingrese un Gramaje"
+                        validatorMessage="ingresa un Gramaje valido"
+                        required="true"
+                        id="gramaje" 
+                        value="#{ProductosController.joya.gramaje}" 
+                        title="gramaje" 
+                        maxlength="30"
+                        class="form-control">
+                       <f:validateLongRange minimum="4" maximum="50"></f:validateLongRange>
+                        </h:inputText>
+                             
+                        
+                       <h:message for="gramaje" style="color:blue"></h:message>
+                         </div>
+                         
+                         <div class="form-group col-md-6">
+                             <label for="validate-text">Talla</label>
+                        <h:inputText
+                            requiredMessage=" ingrese una Talla"
+                        validatorMessage="ingresa una Talla valida"
+                        required="true"
+                        id="Talla" 
+                        value="#{ProductosController.joya.talla}" 
+                        title="Talla" 
+                        maxlength="30"
+                        class="form-control">
+                       <f:validateLongRange minimum="4" maximum="18"></f:validateLongRange>
+                        </h:inputText>
+                             
+                        
+                       <h:message for="Talla" style="color:blue"></h:message>
+                         </div>
+                         
+                          <div class="form-group col-md-6" >
+                             <label for="validate-text">Inscripcion</label>
+                        <h:inputText
+                            requiredMessage=" ingrese una Inscripcion"
+                        validatorMessage="ingresa una Inscripcion valida"
+                        required="true"
+                        id="Inscripcion" 
+                        value="#{ProductosController.joya.inscripcion}" 
+                        title="Talla" 
+                        maxlength="50"
+                        class="form-control">
+                      
+                        </h:inputText>
+                             
+                        
+                       <h:message for="Inscripcion" style="color:blue"></h:message>
+                         </div>
+                         
+                          <div class="form-group col-md-6">
+                             <label for="validate-text">Cantidad</label>
+                        <h:inputText
+                            requiredMessage=" ingrese una Cantidad"
+                        validatorMessage="ingresa una Cantidad valida no puede adquirir mas de 3 productos"
+                        required="true"
+                        id="Cantidad" 
+                        value="#{ProductosController.joya.cantidad}" 
+                        title="Cantidad" 
+                        maxlength="50"
+                        class="form-control">
+                      <f:validateLongRange minimum="1" maximum="3"></f:validateLongRange>
+                        </h:inputText>
+                             
+                        
+                       <h:message for="Cantidad" style="color:blue"></h:message>
+                         </div>
+                         
+                           <div class="form-group col-md-6"> 
+                          <h:outputLabel >Valor</h:outputLabel>
+                    
+                    
+                      <h:inputText 
+                           required="true"
+                        validatorMessage="ingresa un Valor valido"
+                        requiredMessage=" ingrese un Valor"
+                        id="Valor" 
+                        value="#{ProductosController.joya.valorTotal}" 
+                        title="Valor"
+                        maxlength="30"
+                        class="form-control"
+                       
+                        >
+                       <f:convertNumber integerOnly="true" minIntegerDigits="1"  />
+                      </h:inputText>
+                       
+                   
+                    <h:message for="Valor" style="color:blue"></h:message>
+                    </div>
+                    
+                    
+                    
+                    
+                <h:commandButton 
+                    value="Crear Producto"
+                    class="btn btn-info"
+                    actionListener="#{ProductosController.registrarJoya()}"
+                    
+                        >
+                </h:commandButton>
+                         <c:if test="#{ProductosController.estado==true}">
+                        <script language="JavaScript" type="text/javascript">
+                            $(document).ready(function () {
+                                swal({type: "success", title: "¡Producto Creado !", confirmButtonText: "Aceptar", showConfirmButton: true, allowOutsideClick: true, time: 3000}, function () {
+                                    window.location.href = "inicio.xhtml";
+                                });
+                            });
+                        </script> </c:if>
+  #{ProductosController.cambiarEstado()}
+  
+  
+  
+  
+  
+  
+  
+                       
+              
+                
+       
+
+            </h:form>
+                        
+                        
+                        
+                    </div>
+                </f:view>
+
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
