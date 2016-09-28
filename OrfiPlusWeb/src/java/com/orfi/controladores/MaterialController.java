@@ -1,12 +1,6 @@
 package com.orfi.controladores;
 
-import com.orfi.Facades.MaterialFacade;
-import com.orfi.Facades.TipoFacade;
 import com.orfi.entity.Material;
-import com.orfi.entity.Tipo;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -15,16 +9,6 @@ import javax.inject.Inject;
 @Named(value = "materialController")
 @ViewScoped
 public class MaterialController extends AbstractController<Material> {
-    
-    private Material material;
-
-    @EJB
-    private MaterialFacade materialFacade;
-
-    @PostConstruct
-    public void init() {
-        material = new Material();
-    }
 
     public MaterialController() {
         // Inform the Abstract parent controller of the concrete Material Entity
@@ -44,9 +28,4 @@ public class MaterialController extends AbstractController<Material> {
         return "/protegido/pages/joya/index";
     }
 
-    public List<Material> getAll() {
-        List<Material> li = materialFacade.findAll();
-        return li;
-    }
-    
 }
